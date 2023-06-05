@@ -5,11 +5,11 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: CatalogRoute
-          uri: lb://CATALOG-SERVICE
-          predicates:
-            - Path=/catalogs/**
-        - id: MovieRoute
+        - id: movieRoute
           uri: lb://MOVIE-SERVICE
           predicates:
             - Path=/movies/**
+          - id: catalogRoute
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalogs/**
